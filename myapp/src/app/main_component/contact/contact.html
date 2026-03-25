@@ -1,0 +1,97 @@
+
+  <div class="container m-3">
+    <div class="row justify-content-center ">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card shadow p-3">
+          <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+            <div class="mb-3">
+              <label for="firstName" class="form-label p-1"> First name </label>
+              <input
+                formControlName="firstName"
+                type="text"
+                placeholder="First name"
+                class="form-control"
+                id="firstName"
+              />
+              <div class="text-danger">
+                @if (contactForm.controls['firstName']?.errors?.['required'] && contactForm.controls['firstName'].touched) {
+                <span>First name is required</span>
+                }
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label p-1"> Last name </label>
+              <input
+                formControlName="lastName"
+                id="lastName"
+                type="text"
+                placeholder="Last name"
+                class="form-control"
+              />
+              <div class="text-danger">
+                @if(contactForm.controls['lastName'].errors?.['required'] && contactForm.controls['lastName'].touched){
+                  <span>This is required</span>
+                }
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label p-1">Email</label>
+              <input
+                formControlName="email"
+                id="email"
+                type="email"
+                placeholder="exapmle@gmail.com"
+                class="form-control"
+              />
+               <div class="text-danger">
+                @if(contactForm.controls['email'].errors?.['required'] && contactForm.controls['email'].touched){
+                  <span>Email is required</span>
+                }
+                @if(contactForm.controls['email'].errors?.['email']){
+                  <span>Please, enter valid email</span>
+                }
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="mobileNo" class="form-label p-1">Phone Number</label>
+              <input
+                type="tel"
+                formControlName="mobileNo"
+                id="mobileNo"
+                placeholder="Phone number"
+                class="form-control"
+              />
+               <div class="text-danger">
+                @if(contactForm.controls['mobileNo'].errors?.['required'] && contactForm.controls['mobileNo'].touched){
+                  <span>Phone number is required</span>
+                }
+                 @if(contactForm.controls['mobileNo'].errors?.['pattern'] ){
+                  <span>Please, Enter 10 digit Mobile number</span>
+                }
+                
+               
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="feedback" class="form-label p-1">Feedback</label>
+              <textarea formControlName="feedback" id="feedback" class="form-control"> </textarea>
+               <div class="text-danger">
+                @if(contactForm.controls['feedback'].errors?.['required'] && contactForm.controls['feedback'].touched){
+                  <span>This is required</span>
+                }
+              </div>
+            </div>
+            <button
+              class="btn btn-primary form-control"
+              [disabled]="!contactForm.valid"
+              type="Submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
