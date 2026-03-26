@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UserRegister } from '../../../servicess/user-register';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../servicess/auth-service';
 
@@ -31,7 +30,11 @@ export class Login {
   onLogin() {
       this.authService.login(this.form.value).subscribe({
         next:(res) =>{
-          // this.authService.setAccessToken("my-token");
+          
+          // localStorage.setItem('token', res.token);
+  
+          this.authService.setToken(res.token);
+ 
           this.toastr.success("User Login Successfil", "Success");
            this.router.navigate(['/dashboard']);
           this.form.reset();

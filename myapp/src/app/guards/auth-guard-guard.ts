@@ -12,11 +12,12 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
   const token = authService.getToken();
  
 
-  if (token) {
-    return true; // ✅ allow route
-  }else{
-  router.navigate(['/unauthorized']);
-  return false;
+ if (authService.isLoggedIn()) {
+    return true; // ✅ allow dashboard
+  } else {
+    router.navigate(['/unauthorized']); // ❌ block
+    return false;
   }
 };
+
 

@@ -1,5 +1,6 @@
 package com.example.backend.services;
 
+import com.example.backend.Dto.ApiResponse;
 import com.example.backend.Dto.UserInfoDto;
 import com.example.backend.model.UserInfo;
 import com.example.backend.repository.UserInfoRepository;
@@ -30,18 +31,14 @@ public class UserInfoService {
         repository.save(user);
 
         return ResponseEntity.ok(
-                Map.of(
-                        "success","true",
-                        "massage","Form submit successful"));
+               new ApiResponse(true,"Form submit successful",null));
 
     }
 
     /// ///////Get All User
     public ResponseEntity<?> getAllUsers(){
         return ResponseEntity.ok(
-                Map.of(
-                        "success",true,
-                        "data",repository.findAll())
+               new ApiResponse(true,"All Users",repository.findAll())
         );
     }
 }

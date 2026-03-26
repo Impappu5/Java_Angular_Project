@@ -12,16 +12,21 @@ import { Main } from './main_component/main/main';
 import { authGuardGuard } from './guards/auth-guard-guard';
 import { Unauthorized } from './main_component/unauthorized/unauthorized';
 import { Admin } from './main_component/admin/admin';
+import { UserList } from './main_component/user-list/user-list';
+import { Logout } from './main_component/logout/logout';
 
 
 export const routes: Routes = [
 
     { path: 'contact', component: Contact, title: 'Contact Page' },
-    { path: 'dashboard', component: Layout, canActivate:[authGuardGuard] },
+    { path: 'dashboard', component: Layout, canActivate:[authGuardGuard],title: 'Dashboard Page'  },
     { path: '', component: Home, title: 'Home Page' },
     { path: 'login', component: Login, title: 'Login Page' },
     { path: 'signup', component: Signup, title: 'Signup Page' },
     { path: 'about', component: About, title: 'About Page' },
+    {path:'admin',component:Admin,title:"Admin-page"},
+    {path:'user',component:UserList,title:'user-page'},
+    {path:'logout',component:Logout,title:'logout-page'},
 
     {path:'unauthorized',component:Unauthorized, title:'Unauthorized-page'},
 

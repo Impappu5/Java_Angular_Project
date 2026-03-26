@@ -12,8 +12,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class Header {
   constructor(private authService:AuthService, private router:Router,private toastr:ToastrService){}
-  logout() {
-  }
+ logout() {
+  this.authService.logout(); // remove token
+  this.router.navigate(['/login']);
+}
 }
 
  

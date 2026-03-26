@@ -5,8 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { AuthService } from '../../../servicess/auth-service';
-import { UserRegister } from '../../../servicess/user-register';
-// import { Auth } from '../auth';
 
 
 
@@ -30,7 +28,7 @@ export class Signup {
   })
  
 
-  constructor(private toastr: ToastrService, private authService: AuthService, private userRegister: UserRegister) {
+  constructor(private toastr: ToastrService, private authService: AuthService) {
 
   }
 

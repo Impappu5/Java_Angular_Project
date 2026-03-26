@@ -22,5 +22,6 @@ public class Student {
     @Column(unique = true)
     private String email;
     private String password;
+    private String role;
     private LocalDateTime createdAt = LocalDateTime.now();
 }
